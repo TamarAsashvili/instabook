@@ -13,6 +13,7 @@ RUN npm install --quiet --no-optional --loglevel=error
 # Copy the Node.js source code files from the host to the container
 COPY ./config /opt/app/config
 COPY ./src /opt/app/src
+COPY ./index.js /opt/app/index.js
 
 # Set the project startup command
 CMD ["node", "."]
