@@ -32,3 +32,59 @@ For this project, the following technologies will be used:
 - [Express](https://github.com/expressjs/express), web server
 - [PostgreSQL](https://www.postgresql.org/docs/11/sql-select.html), database server
 - [PG](https://github.com/brianc/node-postgres), database client
+
+## Todo
+
+### User related CRUD tasks
+
+- [ ] users table
+- [ ] user(s) retrieval functions and database queries
+- [ ] user creation function and database query
+- [ ] user modification function and database query
+- [ ] user deletion function and database query
+
+### Post related CRUD tasks
+
+- [ ] posts table
+- [ ] post(s) retrieval functions and database queries
+- [ ] post creation function and database query
+- [ ] post modification function and database query
+- [ ] post deletion function and database query
+
+### Comment related CRUD tasks
+
+- [ ] comments table
+- [ ] comment(s) retrieval functions and database queries
+- [ ] comment creation function and database query
+- [ ] comment modification function and database query
+- [ ] comment deletion function and database query
+
+### Filtering, sorting and pagination
+
+- [ ] filter users by handle
+- [ ] filter posts by user
+- [ ] filter comments by post
+- [ ] sort users by id
+- [ ] sort posts by likes
+- [ ] sort comments by creation date
+- [ ] paginate users retrieval
+- [ ] paginate posts retrieval
+- [ ] paginate comments retrieval
+
+### Performance
+
+- [ ] Index user queries
+- [ ] Index post queries
+- [ ] Index comment queries
+
+### Security
+
+- [ ] Prevent SQL injections
+- [ ] Prevent race conditions
+
+### Adanced queries
+
+- [ ] aggregation queries
+- [ ] sub-queries and CTEs
+- [ ] LIKE and RegExp operators
+- [ ] array operators
