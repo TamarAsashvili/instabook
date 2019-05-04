@@ -9,6 +9,9 @@ const postRouter = express.Router();
 // Get all posts
 postRouter.get('/', (req, res) => res.json({}));
 
+// Create a post
+postRouter.post('/', (req, res) => res.json({}));
+
 // Get one specific post by id
 postRouter.get('/:id', (req, res) => res.json({}));
 

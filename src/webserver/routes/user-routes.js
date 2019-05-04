@@ -9,6 +9,9 @@ const userRouter = express.Router();
 // Get all users
 userRouter.get('/', (req, res) => res.json({}));
 
+// Create a user
+userRouter.post('/', (req, res) => res.json({}));
+
 // Get one specific user by id
 userRouter.get('/:id', (req, res) => res.json({}));
 

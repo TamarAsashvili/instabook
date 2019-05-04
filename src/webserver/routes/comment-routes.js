@@ -7,7 +7,10 @@ const express = require('express');
 const commentRouter = express.Router();
 
 // Get all comments
-commentRouter.get('', (req, res) => res.json({}));
+commentRouter.get('/', (req, res) => res.json({}));
+
+// Create a comment
+commentRouter.post('/', (req, res) => res.json({}));
 
 // Get one specific post by id
 commentRouter.get('/:id', (req, res) => res.json({}));
