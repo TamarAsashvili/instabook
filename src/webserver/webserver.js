@@ -2,12 +2,15 @@
 
 // Import the Express server module
 const express = require('express');
+const bodyParser = require('body-parser');
 
 // Import our configuration
 const config = require('../../config');
 
 // Create our server
 const app = express();
+
+app.use(bodyParser.json());
 
 // Setup our user routes
 app.use('/api/users', require('./routes/user-routes'));
