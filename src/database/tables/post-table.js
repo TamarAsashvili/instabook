@@ -5,64 +5,64 @@ const SQL = require('pg-template-tag').default;
 
 const createTable = () => database.query(`
   CREATE TABLE IF NOT EXISTS
-    users
+    posts
     (
       id SERIAL PRIMARY KEY,
-      first_name TEXT NOT NULL,
-      last_name TEXT NULL,
-      email TEXT NOT NULL
+      title TEXT NOT NULL,
+      content TEXT NULL,
+      user_id INTEGER NOT NULL
     );
 `);
 
 const createRow = async data => (await database.query(SQL`
   INSERT INTO
-    users
+    posts
     (
-      first_name,
-      last_name,
-      email
+      title,
+      content,
+      user_id
     )
   VALUES
     (
-      ${data.firstName},
-      ${data.lastName},
-      ${data.email}
+      ${data.title},
+      ${data.content},
+      ${data.user_id}
     )
   RETURNING
     *;
-`))[0] || null;
+`))[0] || null;
 
 const getRows = () => database.query(`
   SELECT
     *
   FROM
-    users;
+    posts;
 `);
 
 const getRow = async id => (await database.query(SQL`
   SELECT
     *
   FROM
-    users
+    posts
   WHERE
     id = ${id};
 `))[0] || null;
 
 const updateRow = async (id, data) => (await database.query(SQL`
   UPDATE
-    users
+    posts
   SET
-    first_name = ${data.firstName},
-    last_name = ${data.lastName}
+    title = ${data.title},
+    content = ${data.content}
   WHERE
     id = ${id}
   RETURNING
     *;
-`))[0] || null;
+`))[0] || null;
 
 const deleteRow = id => database.query(SQL`
   DELETE FROM
-    users
+    posts
   WHERE
     id = ${id};
 `);

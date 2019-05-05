@@ -4,5 +4,11 @@
     "express": "^4.16.4",
     "pg": "^7.10.0",
     "pg-template-tag": "^0.1.2"
+  },
+  "devDependencies": {
+    "jest": "^24.8.0"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/jest --runInBand"
   }
 }

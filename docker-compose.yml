@@ -9,6 +9,8 @@ services:
     volumes:
       - ./config:/opt/app/config
       - ./src:/opt/app/src
+      - ./test:/opt/app/test
+      - ./index.js:/opt/app/index.js
     depends_on:
       - postgresql
 

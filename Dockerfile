@@ -8,11 +8,13 @@ WORKDIR /opt/app
 COPY ./package.json /opt/app/package.json
 
 # Install Node.js dependencies
-RUN npm install --quiet --no-optional --loglevel=error
+# RUN npm install --quiet --no-optional --loglevel=error
+RUN yarn install
 
 # Copy the Node.js source code files from the host to the container
 COPY ./config /opt/app/config
 COPY ./src /opt/app/src
+COPY ./test /opt/app/test
 COPY ./index.js /opt/app/index.js
 
 # Set the project startup command

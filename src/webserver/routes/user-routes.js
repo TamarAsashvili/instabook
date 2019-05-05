@@ -8,13 +8,12 @@ const userTable = require('../../database/tables/user-table');
 const userRouter = express.Router();
 
 // Get all users
-userRouter.get('/', async (req, res) => {
+userRouter.get('/', async (req, res, next) => {
   try {
     const users = await userTable.getRows();
-    res.json(users); 
+    return res.json(users); 
   } catch (err) {
-    console.error(err);
-    res.status(500).json({});
+    return next(err);
   }
 });
 
@@ -22,11 +21,10 @@ userRouter.get('/', async (req, res) => {
 userRouter.post('/', async (req, res) => {
   const data = req.body;
   try {
-    const users = await userTable.createRow(data);
-    res.json(users);
+    const user = await userTable.createRow(data);
+    return res.json(user);
   } catch (err) {
-    console.error(err);
-    res.status(500).json({});
+    return next(err);
   }
 });
 
@@ -34,11 +32,10 @@ userRouter.post('/', async (req, res) => {
 userRouter.get('/:id', async (req, res) => {
   const id = req.params.id;
   try {
-    const user = (await userTable.getRow(id))[0];
-    res.json(user);
+    const user = await userTable.getRow(id);
+    return res.json(user);
   } catch (err) {
-    console.error(err);
-    res.status(500).json({});
+    return next(err);
   }
 });
 
@@ -47,16 +44,23 @@ userRouter.put('/:id', async (req, res) => {
   const id = req.params.id;
   const data = req.body;
   try {
-    const user = (await userTable.updateRow(id, data))[0];
-    res.json(user);
+    const user = await userTable.updateRow(id, data);
+    return res.json(user);
   } catch (err) {
-    console.error(err);
-    res.status(500).json({});
+    return next(err);
   }
 });
 
 // Delete one specific user by id
-userRouter.delete('/:id', (req, res) => res.json({}));
+userRouter.delete('/:id', (req, res) => {
+  const id = req.params.id;
+  try {
+    await userTable.deleteRow(id);
+    return res.json({});
+  } catch (err) {
+    return next(err);
+  }
+});
 
 // Export our user router
 module.exports = userRouter;
