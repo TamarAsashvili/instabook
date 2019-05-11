@@ -52,7 +52,7 @@ userRouter.put('/:id', async (req, res) => {
 });
 
 // Delete one specific user by id
-userRouter.delete('/:id', (req, res) => {
+userRouter.delete('/:id', async(req, res) => {
   const id = req.params.id;
   try {
     await userTable.deleteRow(id);

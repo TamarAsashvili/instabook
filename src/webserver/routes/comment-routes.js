@@ -26,6 +26,7 @@ commentRouter.post('/', async (req, res) => {
       return next(err);
     }
   });
+  
 // Get one specific post by id
 commentRouter.get('/:id', async (req, res) => {
     const id = req.params.id;
