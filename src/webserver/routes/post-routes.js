@@ -29,7 +29,7 @@ postRouter.post('/', async (req, res) => {
 });
 
 // Get one specific post by id
-postRouter.get('/:id', async (req, res) => {
+postRouter.get('/:id', async (req, res, next) => {
   const id = req.params.id;
   try {
     const post = await postTable.getRow(id);
