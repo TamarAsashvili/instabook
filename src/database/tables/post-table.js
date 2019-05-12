@@ -10,7 +10,7 @@ const createTable = () => database.query(`
       id SERIAL PRIMARY KEY,
       title TEXT NOT NULL,
       content TEXT NULL,
-      user_id INTEGER NOT NULL
+      user_id INTEGER NOT NULL REFERENCES users (id) ON DELETE CASCADE
     );
 `);
 

@@ -11,14 +11,14 @@ const postRouter = express.Router();
 postRouter.get('/', async (req, res, next) => {
   try {
     const posts = await postTable.getRows();
-    return res.json(posts); 
+    return res.json(posts);
   } catch (err) {
     return next(err);
   }
 });
 
 // Create a post
-postRouter.post('/', async (req, res) => {
+postRouter.post('/', async (req, res, next) => {
   const data = req.body;
   try {
     const post = await postTable.createRow(data);
@@ -29,7 +29,7 @@ postRouter.post('/', async (req, res) => {
 });
 
 // Get one specific post by id
-postRouter.get('/:id', async (req, res) => {
+postRouter.get('/:id', async (req, res, next) => {
   const id = req.params.id;
   try {
     const post = await postTable.getRow(id);
@@ -40,7 +40,7 @@ postRouter.get('/:id', async (req, res) => {
 });
 
 // Modify one specific post by id
-postRouter.put('/:id', async (req, res) => {
+postRouter.put('/:id', async (req, res, next) => {
   const id = req.params.id;
   const data = req.body;
   try {
@@ -52,7 +52,7 @@ postRouter.put('/:id', async (req, res) => {
 });
 
 // Delete one specific post by id
-postRouter.delete('/:id', (req, res) => {
+postRouter.delete('/:id', async (req, res, next) => {
   const id = req.params.id;
   try {
     await postTable.deleteRow(id);

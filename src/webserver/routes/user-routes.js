@@ -11,7 +11,7 @@ const userRouter = express.Router();
 userRouter.get('/', async (req, res, next) => {
   try {
     const users = await userTable.getRows();
-    return res.json(users); 
+    return res.json(users);
   } catch (err) {
     return next(err);
   }
@@ -52,7 +52,7 @@ userRouter.put('/:id', async (req, res) => {
 });
 
 // Delete one specific user by id
-userRouter.delete('/:id', (req, res) => {
+userRouter.delete('/:id', async (req, res) => {
   const id = req.params.id;
   try {
     await userTable.deleteRow(id);
