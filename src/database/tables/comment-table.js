@@ -32,10 +32,6 @@ const createRow = async (postId, data) => (await database.query(SQL`
     *;
 `))[0] || null;
 
-const createRow = (postId, data) => database
-  .create('comments')
-  .row({ ...data, postId: postId });
-
 const getRows = postId => database.query(`
   SELECT
     *
