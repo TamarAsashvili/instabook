@@ -25,8 +25,8 @@ const createRow = async data => (await database.query(SQL`
   VALUES
     (
       ${data.content},
-      ${data.user_id},
-      ${data.post_id}
+      ${data.userId},
+      ${data.postId}
     )
   RETURNING
     *;

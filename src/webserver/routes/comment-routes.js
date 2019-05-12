@@ -17,7 +17,7 @@ commentRouter.get('/', async (req, res, next) => {
     }
   });
 // Create a comment
-commentRouter.post('/', async (req, res) => {
+commentRouter.post('/', async (req, res, next) => {
     const data = req.body;
     try {
       const comment = await commentTable.createRow(data);
@@ -28,7 +28,7 @@ commentRouter.post('/', async (req, res) => {
   });
   
 // Get one specific post by id
-commentRouter.get('/:id', async (req, res) => {
+commentRouter.get('/:id', async (req, res, next) => {
     const id = req.params.id;
     try {
       const post = await commentTable.getRow(id);
@@ -39,7 +39,7 @@ commentRouter.get('/:id', async (req, res) => {
   });
   
 // Modify one specific post by id
-commentRouter.put('/:id', async (req, res) => {
+commentRouter.put('/:id', async (req, res, next) => {
     const id = req.params.id;
     const data = req.body;
     try {
@@ -50,7 +50,7 @@ commentRouter.put('/:id', async (req, res) => {
     }
   });
 // Delete one specific post by id
-commentRouter.delete('/:id', async (req, res) => {
+commentRouter.delete('/:id', async (req, res, next) => {
     const id = req.params.id;
     try {
       await commentTable.deleteRow(id);
