@@ -18,6 +18,8 @@ app.use('/api/users', require('./routes/user-routes'));
 app.use('/api/posts', require('./routes/post-routes'));
 // Setup our comment routes
 app.use('/api/posts', require('./routes/comment-routes'));
+// Setup our views routes
+app.use('/api/views', require('./routes/view-routes'));
 
 app.use((err, req, res, next) => {
   console.error('Oops, we got an error:', err);

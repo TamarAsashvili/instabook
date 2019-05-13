@@ -74,11 +74,24 @@ const deleteRow = (postId, id) => database.query(SQL`
     id = ${id};
 `);
 
+const getUsersRows = () => database.query(`
+  SELECT
+    users.first_name,
+    users.last_name,
+    comments.*
+  FROM
+    users
+  INNER JOIN
+    comments
+    ON comments.user_id = users.id;
+`);
+
 module.exports = {
   createTable,
   createRow,
   getRows,
   getRow,
   updateRow,
-  deleteRow
+  deleteRow,
+  getUsersRows
 };
