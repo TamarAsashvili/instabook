@@ -2,7 +2,7 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.16.4",
-    "pg": "^7.10.0",
+    "pg": "^7.11.0",
     "pg-template-tag": "^0.1.2"
   },
   "devDependencies": {

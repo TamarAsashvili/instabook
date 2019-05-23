@@ -26,7 +26,7 @@ const createRow = async data => (await database.query(SQL`
     (
       ${data.title},
       ${data.content},
-      ${data.user_id}
+      ${data.userId}
     )
   RETURNING
     *;
@@ -67,11 +67,27 @@ const deleteRow = id => database.query(SQL`
     id = ${id};
 `);
 
+
+const myFunction = async () =>(await database.query(SQL`
+  SELECT
+     users.first_name,
+     users.last_name,
+     posts.*
+  FROM 
+     users
+  INNER JOIN
+     posts
+     ON posts.user_id = users.id;
+  
+`));
+
+
 module.exports = {
   createTable,
   createRow,
   getRows,
   getRow,
   updateRow,
-  deleteRow
+  deleteRow,
+  myFunction
 };

@@ -9,8 +9,10 @@ const userRouter = express.Router();
 
 // Get all users
 userRouter.get('/', async (req, res, next) => {
+  const offset = req.query.offset;
+  const limit = req.query.limit;
   try {
-    const users = await userTable.getRows();
+    const users = await userTable.getRows(offset, limit);
     return res.json(users);
   } catch (err) {
     return next(err);
@@ -18,7 +20,7 @@ userRouter.get('/', async (req, res, next) => {
 });
 
 // Create a user
-userRouter.post('/', async (req, res) => {
+userRouter.post('/', async (req, res, next) => {
   const data = req.body;
   try {
     const user = await userTable.createRow(data);

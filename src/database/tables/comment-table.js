@@ -32,11 +32,9 @@ const createRow = async (postId, data) => (await database.query(SQL`
     *;
 `))[0] || null;
 
-const createRow = (postId, data) => database
-  .create('comments')
-  .row({ ...data, postId: postId });
 
-const getRows = postId => database.query(`
+
+const getRows = (postId) => database.query(`
   SELECT
     *
   FROM
@@ -78,11 +76,26 @@ const deleteRow = (postId, id) => database.query(SQL`
     id = ${id};
 `);
 
+const myFunction = async ()=> (await database.query(SQL`
+  SELECT
+     users.first_name,
+     users.last_name,
+     comment.*
+  FROM 
+     users
+  INNER JOIN
+     comment
+     ON comment.user_id = users.id;
+     
+`));
+
+
 module.exports = {
   createTable,
   createRow,
   getRows,
   getRow,
   updateRow,
-  deleteRow
+  deleteRow,
+  myFunction
 };

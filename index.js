@@ -16,4 +16,6 @@ process.on('SIGINT', () => process.exit(128));
   await postTable.createTable();
   // Create the comment table
   await commentTable.createTable();
+
+  
 })();

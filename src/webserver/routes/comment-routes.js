@@ -8,7 +8,7 @@ const commentTable = require('../../database/tables/comment-table');
 const commentRouter = express.Router();
 
 // Get all comments
-commentRouter.get('/:postId/comments/', async (req, res, next) => {
+commentRouter.get('/:postId/comments', async (req, res, next) => {
   const postId = req.params.postId;
   try {
     const comments = await commentTable.getRows(postId);
