@@ -82,6 +82,7 @@ const myFunction = async () =>(await database.query(SQL`
 `));
 
 
+
 module.exports = {
   createTable,
   createRow,

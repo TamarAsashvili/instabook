@@ -21,6 +21,7 @@ app.use('/api/posts', require('./routes/comment-routes'));
 //Setap our views routes
 app.use('/api/views', require('./routes/vies-routes'));
 
+
 app.use((err, req, res, next) => {
   console.error('Oops, we got an error:', err);
   if (!res.headersSent) {

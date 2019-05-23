@@ -33,7 +33,6 @@ const createRow = async (postId, data) => (await database.query(SQL`
 `))[0] || null;
 
 
-
 const getRows = (postId) => database.query(`
   SELECT
     *
@@ -76,6 +75,7 @@ const deleteRow = (postId, id) => database.query(SQL`
     id = ${id};
 `);
 
+
 const myFunction = async ()=> (await database.query(SQL`
   SELECT
      users.first_name,
@@ -97,5 +97,6 @@ module.exports = {
   getRow,
   updateRow,
   deleteRow,
-  myFunction
+  myFunctio,
+  getUsersRows
 };
