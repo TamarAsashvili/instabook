@@ -50,7 +50,7 @@ const getRow = async (postId, id) => (await database.query(SQL`
     *
   FROM
     comments;
-`);
+`));
 
 const getRow = async id => (await database.query(SQL`
 
