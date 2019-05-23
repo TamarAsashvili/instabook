@@ -15,6 +15,7 @@ const createTable = () => database.query(`
 `);
 
 const createRow = async (postId, data) => (await database.query(SQL`
+
   INSERT INTO
     comments
     (
@@ -33,6 +34,7 @@ const createRow = async (postId, data) => (await database.query(SQL`
 `))[0] || null;
 
 
+
 const getRows = (postId) => database.query(`
   SELECT
     *
@@ -43,6 +45,15 @@ const getRows = (postId) => database.query(`
 `);
 
 const getRow = async (postId, id) => (await database.query(SQL`
+
+  SELECT
+    *
+  FROM
+    comments;
+`);
+
+const getRow = async id => (await database.query(SQL`
+
   SELECT
     *
   FROM
@@ -54,6 +65,7 @@ const getRow = async (postId, id) => (await database.query(SQL`
 `))[0] || null;
 
 const updateRow = async (postId, id, data) => (await database.query(SQL`
+  
   UPDATE
     comments
   SET
@@ -61,10 +73,12 @@ const updateRow = async (postId, id, data) => (await database.query(SQL`
   WHERE
     post_id = ${postId}
     AND
+
     id = ${id}
   RETURNING
     *;
 `))[0] || null;
+
 
 const deleteRow = (postId, id) => database.query(SQL`
   DELETE FROM
@@ -90,6 +104,7 @@ const myFunction = async ()=> (await database.query(SQL`
 `));
 
 
+
 module.exports = {
   createTable,
   createRow,
@@ -99,4 +114,5 @@ module.exports = {
   deleteRow,
   myFunctio,
   getUsersRows
+
 };

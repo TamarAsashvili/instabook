@@ -8,6 +8,7 @@ const commentTable = require('../../database/tables/comment-table');
 const commentRouter = express.Router();
 
 // Get all comments
+
 commentRouter.get('/:postId/comments', async (req, res, next) => {
   const postId = req.params.postId;
   try {
@@ -66,6 +67,7 @@ commentRouter.delete('/:postId/comments/:commentId', async (req, res, next) => {
     return next(err);
   }
 });
+
 
 // Export our post router
 module.exports = commentRouter;

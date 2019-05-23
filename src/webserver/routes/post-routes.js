@@ -52,7 +52,9 @@ postRouter.put('/:id', async (req, res, next) => {
 });
 
 // Delete one specific post by id
+
 postRouter.delete('/:id', async (req, res, next) => {
+
   const id = req.params.id;
   try {
     await postTable.deleteRow(id);

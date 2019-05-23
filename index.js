@@ -14,8 +14,13 @@ process.on('SIGINT', () => process.exit(128));
   await userTable.createTable();
   // Create the post table
   await postTable.createTable();
+<<<<<<< HEAD
   // Create the comment table
   await commentTable.createTable();
 
   
+=======
+  //Create the comment table
+  await commentTable.createTable();
+>>>>>>> d0d80478481444c7ddc98a23b3d63bcc307cf2a9
 })();
